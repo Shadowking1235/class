@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>classTask.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7a7a; font-style: italic;}
+.s1 { color: #aeb5bd;}
+.s2 { color: #597cc2;}
+.s3 { color: #267dff;}
+.s4 { color: #5c7ab8;}
+.s5 { color: #807d6e; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+classTask.py</font>
+</center></td></tr></table>
+<pre><span class="s0">&quot;&quot;&quot; 
+Create a class called &quot;Vehicle&quot; and methods that allow you to set the &quot;Make&quot;, &quot;Model&quot;, &quot;Year,&quot;, and &quot;Weight&quot;. 
+The class should also contain a &quot;NeedsMaintenance&quot; boolean that defaults to False, and and &quot;TripsSinceMaintenance&quot; Integer that defaults to 0. 
+Next an inheritance classes from Vehicle called &quot;Cars&quot;. 
+The Cars class should contain a method called &quot;Drive&quot; that sets the state of a boolean isDriving to True. 
+It should have another method called &quot;Stop&quot; that sets the value of isDriving to false. 
+Switching isDriving from true to false should increment the &quot;TripsSinceMaintenance&quot; counter. 
+And when TripsSinceMaintenance exceeds 100, then the NeedsMaintenance boolean should be set to true. 
+Add a &quot;Repair&quot; method to either class that resets the TripsSinceMaintenance to zero, and NeedsMaintenance to false. 
+Create 3 different cars, using your Cars class, and drive them all a different number of times. 
+Then print out their values for Make, Model, Year, Weight, NeedsMaintenance, and TripsSinceMaintenance 
+&quot;&quot;&quot;</span>
+
+
+<span class="s2">class </span><span class="s1">Vehicle:</span>
+
+    MaxTripsMaintenances = <span class="s3">100</span>
+
+    <span class="s2">def </span><span class="s1">__init__(self</span><span class="s4">, </span><span class="s1">make=</span><span class="s5">''</span><span class="s4">, </span><span class="s1">model=</span><span class="s5">''</span><span class="s4">, </span><span class="s1">year=</span><span class="s3">2019</span><span class="s4">, </span><span class="s1">weight=</span><span class="s3">0</span><span class="s1">):</span>
+        self.Make = make
+        self.Model = model
+        self.Year = year
+        self.Weight = weight
+        self.NeedsMaintenance = <span class="s2">False</span>
+        <span class="s1">self.TripsSinceMaintenance = </span><span class="s3">0</span>
+
+    <span class="s2">def </span><span class="s1">addtrip(self):</span>
+        self.TripsSinceMaintenance += <span class="s3">1</span>
+        <span class="s2">if </span><span class="s1">self.TripsSinceMaintenance &gt; type(self).MaxTripsMaintenances:</span>
+            self.NeedsMaintenance = <span class="s2">True</span>
+    def <span class="s1">repair(self):</span>
+        self.NeedsMaintenance = <span class="s2">False</span>
+        <span class="s1">self.TripsSinceMaintenance = </span><span class="s3">0</span>
+    <span class="s2">def </span><span class="s1">__str__(self):</span>
+        <span class="s2">return </span><span class="s5">f'Model: </span><span class="s4">{</span><span class="s1">self.Model</span><span class="s4">}</span><span class="s5">, Make: </span><span class="s4">{</span><span class="s1">self.Make</span><span class="s4">}</span><span class="s5">, year: </span><span class="s4">{</span><span class="s1">self.Year</span><span class="s4">}</span><span class="s5">, </span><span class="s4">\ 
+    </span><span class="s5">weight: </span><span class="s4">{</span><span class="s1">self.Weight</span><span class="s4">}</span><span class="s5">, Trips: </span><span class="s4">{</span><span class="s1">self.TripsSinceMaintenance</span><span class="s4">}</span><span class="s5">, Needs Maintenance: </span><span class="s4">{</span><span class="s1">self.NeedsMaintenance</span><span class="s4">}</span><span class="s5">'</span>
+<span class="s2">class </span><span class="s1">Cars(Vehicle):</span>
+
+
+    <span class="s2">def </span><span class="s1">__init__(self</span><span class="s4">, </span><span class="s1">make=</span><span class="s5">''</span><span class="s4">, </span><span class="s1">model=</span><span class="s5">''</span><span class="s4">, </span><span class="s1">year=</span><span class="s3">2019</span><span class="s4">, </span><span class="s1">weight=</span><span class="s3">0</span><span class="s1">):</span>
+        super().__init__(make=make<span class="s4">, </span><span class="s1">model=model</span><span class="s4">, </span><span class="s1">year=year</span><span class="s4">, </span><span class="s1">weight=weight)</span>
+        self.Driving = <span class="s2">False</span>
+
+
+    def <span class="s1">drive(self):</span>
+        self.Driving = <span class="s2">True</span>
+  
+
+    def <span class="s1">Stop(self):</span>
+        self.Driving = <span class="s2">False</span>
+        <span class="s1">self.addTrip()</span>
+
+
+    <span class="s2">def </span><span class="s1">__init__(self</span><span class="s4">, </span><span class="s1">make=</span><span class="s5">''</span><span class="s4">, </span><span class="s1">model=</span><span class="s5">''</span><span class="s4">, </span><span class="s1">year=</span><span class="s3">2019</span><span class="s4">, </span><span class="s1">weight=</span><span class="s3">0</span><span class="s1">):</span>
+        super().__init__(make=make<span class="s4">, </span><span class="s1">model=model</span><span class="s4">, </span><span class="s1">year=year</span><span class="s4">, </span><span class="s1">weight=weight)</span>
+        self.Flying = <span class="s2">False</span>
+
+   
+    def <span class="s1">Land(self):</span>
+        <span class="s0">&quot;&quot;&quot;Sets flying flag to be false and increments trip counter&quot;&quot;&quot;</span>
+        <span class="s1">self.Flying = </span><span class="s2">False</span>
+        <span class="s1">self.addTrip()</span>
+
+
+    Mercedes = Cars(make=<span class="s5">'Mercedes'</span><span class="s4">, </span><span class="s1">model=</span><span class="s5">'Mercedesv4'</span><span class="s4">, </span><span class="s1">year=</span><span class="s3">2012</span><span class="s4">, </span><span class="s1">weight=</span><span class="s3">4432</span><span class="s1">)</span>
+Chevrolet = Cars(make=<span class="s5">'Chevrolet'</span><span class="s4">, </span><span class="s1">model=</span><span class="s5">'Chevroletv3'</span><span class="s4">, </span><span class="s1">year=</span><span class="s3">2011</span><span class="s4">, </span><span class="s1">weight=</span><span class="s3">8400</span><span class="s1">)</span>
+Lada = Cars(make=<span class="s5">'Lada'</span><span class="s4">, </span><span class="s1">model=</span><span class="s5">'Ladagranta'</span><span class="s4">, </span><span class="s1">year=</span><span class="s3">2009</span><span class="s4">, </span><span class="s1">weight=</span><span class="s3">4223</span><span class="s1">)</span>
+
+
+<span class="s2">def </span><span class="s1">drive(car</span><span class="s4">, </span><span class="s1">times):</span>
+
+
+    <span class="s2">for </span><span class="s1">i </span><span class="s2">in </span><span class="s1">range(times):</span>
+        car.Drive()
+        car.Stop()
+
+drive(Mercedes<span class="s4">, </span><span class="s3">100</span><span class="s1">)</span>
+print(Mercedes)
+
+drive(Chevrolet<span class="s4">, </span><span class="s3">101</span><span class="s1">)</span>
+print(Chevrolet)
+
+drive(Lada<span class="s4">, </span><span class="s3">200</span><span class="s1">)</span>
+print(Lada)
+</pre>
+</body>
+</html>
